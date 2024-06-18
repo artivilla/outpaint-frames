@@ -6,8 +6,7 @@ import { DebugLink } from "./components/DebugLink";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "frames.js starter",
-    description: "This is a frames.js starter template",
+    title: "outpaint frames",
     other: {
       ...(await fetchMetadata(new URL("/frames", appURL()))),
     },
@@ -19,11 +18,8 @@ export default async function Home() {
   // then, when done, return next frame
   return (
     <div className="p-4">
-      frames.js starter kit. The Template Frame is on this page, it&apos;s in
-      the html meta tags (inspect source). <DebugLink /> or see{" "}
-      <Link href="/examples" className="underline">
-        other examples
-      </Link>
+      nothing to see here. for more info, check out the{" "}
+      <Link href="https://outpaint.io/">outpaint.io</Link>
     </div>
   );
 }
