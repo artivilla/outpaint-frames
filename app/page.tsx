@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "outpaint frames",
     other: {
-      ...(await fetchMetadata(new URL("/frames", appURL()))),
+      ...(await fetchMetadata(new URL("/nounish", appURL()))),
     },
   };
 }

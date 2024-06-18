@@ -3,8 +3,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   // without a title, warpcast won't validate your frame
-  title: "how nounish are you?",
-  description: "quiz like frame to redeem your nounish merch",
+  title: "outpaint frames",
+  description: "collection of outpaint frames for exploration",
 };
 
 export default function RootLayout({

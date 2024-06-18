@@ -1,5 +1,5 @@
 import { createFrames } from "frames.js/next";
-import { FRAMES_BASE_PATH, appURL } from "../utils";
+import { appURL } from "../utils";
 import { farcasterHubContext } from "frames.js/middleware";
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
@@ -9,6 +9,7 @@ type State = {
   score: number;
 };
 
+export const FRAMES_BASE_PATH = path.basename(path.resolve(__dirname));
 export const frames = createFrames<State>({
   basePath: FRAMES_BASE_PATH,
   baseUrl: appURL(),

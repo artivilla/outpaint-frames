@@ -30,5 +30,3 @@ export function vercelURL() {
     ? `https://${process.env.VERCEL_URL}`
     : undefined;
 }
-
-export const FRAMES_BASE_PATH = "/frames";
