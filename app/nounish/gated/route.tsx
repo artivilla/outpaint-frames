@@ -7,9 +7,9 @@ import { getCapColor, getLastPlayedTimestamp, getPoints } from "../../lib/game";
 
 const REQUIRED_CHANNELS = ["outpaint"];
 const frameHandler = frames(async (ctx) => {
-  if (!ctx?.message?.isValid) {
-    return error("Invalid input");
-  }
+  // if (!ctx?.message?.isValid) {
+  //   return error("Invalid input");
+  // }
 
   const fid = ctx.message?.requesterFid;
   if (!fid) {
