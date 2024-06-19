@@ -17,3 +17,11 @@ deployment on vercel
 bun install
 bun run dev:monorepo
 ```
+
+###todo
+
+- add in frame txn
+- add ability to submit delivery address on IO via farcaster signin (farcaster username + email to send receipt + store txnId)
+- upload images per cap
+- bg image per quiz
+- validate upstash
