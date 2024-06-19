@@ -6,10 +6,10 @@ nounish (app/nounish) is a fun little quiz where you earn a unique rarity cap co
 
 ### built upon
 
-airstack API
-frames.js (https://framesjs.org) framework
-upstash (https://upstash.com) for redis storage
-deployment on vercel
+- airstack API
+- frames.js (https://framesjs.org) framework
+- upstash (https://upstash.com) for redis storage
+- deployment on vercel
 
 ### getting started
 
