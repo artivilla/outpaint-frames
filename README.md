@@ -1,8 +1,8 @@
-# collection of outpaint frames
+# outpaint frames
 
-This is a collection of OSS frames by Outpaint you can re-use for your own projects.
+a collection of frames by Outpaint you can re-use for your own projects
 
-nounish (locahost:3000/nounish) is a fun little quiz where you earn a unique rarity cap color based on the points you accumulate.
+nounish (app/nounish) is a fun little quiz where you earn a unique rarity cap color based on the points you accumulate.
 
 ### built upon
 
@@ -18,7 +18,7 @@ bun install
 bun run dev:monorepo
 ```
 
-###todo
+### todo
 
 - add in frame txn
 - add ability to submit delivery address on IO via farcaster signin (farcaster username + email to send receipt + store txnId)
