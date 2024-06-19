@@ -18,7 +18,7 @@ const frameHandler = frames(async (ctx) => {
       </div>
     ),
     buttons: [
-      <Button action="post" target={{ pathname: "/nounish/gated" }}>
+      <Button action="post" target={{ pathname: "/gated" }}>
         start
       </Button>,
     ],

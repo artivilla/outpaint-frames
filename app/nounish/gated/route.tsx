@@ -7,9 +7,9 @@ import { getCapColor, getLastPlayedTimestamp, getPoints } from "../../lib/game";
 const REQUIRED_CHANNELS = ["outpaint"];
 const frameHandler = frames(async (ctx) => {
   console.log("🚀 ~ frameHandler ~ ctx:", ctx);
-  // if (!ctx?.state?.isValid) {
-  //   throw new Error("Invalid message");
-  // }
+  if (!ctx?.state?.isValid) {
+    throw new Error("Invalid message");
+  }
 
   const fid = ctx.message?.requesterFid;
   if (!fid) {
@@ -34,6 +34,11 @@ const frameHandler = frames(async (ctx) => {
   if (!newPlayer) {
     points = await getPoints(fid);
   }
+
+  // debug
+  // const newPlayer = true;
+  // const isUserEligibleToPlayAgain = true;
+  // const points = 0;
 
   return {
     image: (

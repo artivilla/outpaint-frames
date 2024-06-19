@@ -1,4 +1,4 @@
-import { getData } from "./redis";
+import { getData, saveData } from "./redis";
 
 export async function getLastPlayedTimestamp(
   fid: number
@@ -14,4 +14,8 @@ export async function getPoints(fid: number): Promise<number> {
 
 export function getCapColor(points: number): string {
   return "white";
+}
+
+export async function setPoints(fid: number, value: number) {
+  const data = await saveData("points", fid, value.toString());
 }
