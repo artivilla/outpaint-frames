@@ -1,23 +1,23 @@
 /* eslint-disable react/jsx-key */
 import { Button } from "frames.js/next";
+import { error } from "frames.js/core";
 import { frames } from "../frames";
 import { isUserFollowingChannels } from "../../lib/farcaster";
 import { getCapColor, getLastPlayedTimestamp, getPoints } from "../../lib/game";
 
 const REQUIRED_CHANNELS = ["outpaint"];
 const frameHandler = frames(async (ctx) => {
-  console.log("🚀 ~ frameHandler ~ ctx:", ctx);
-  if (!ctx?.state?.isValid) {
-    throw new Error("Invalid message");
+  if (!ctx?.message?.isValid) {
+    return error("Invalid input");
   }
 
   const fid = ctx.message?.requesterFid;
   if (!fid) {
-    throw new Error("No fid identified");
+    return error("No fid identified");
   }
 
-  if (await isUserFollowingChannels(fid, REQUIRED_CHANNELS)) {
-    throw new Error("follow /outpaint to start");
+  if (!(await isUserFollowingChannels(fid, REQUIRED_CHANNELS))) {
+    return error("follow /outpaint to start", 403);
   }
 
   const lastPlayedTimeStamp = await getLastPlayedTimestamp(fid);
@@ -36,7 +36,7 @@ const frameHandler = frames(async (ctx) => {
   }
 
   // debug
-  // const newPlayer = true;
+  // let newPlayer = false;
   // const isUserEligibleToPlayAgain = true;
   // const points = 0;
 
@@ -61,26 +61,23 @@ const frameHandler = frames(async (ctx) => {
       </div>
     ),
     buttons: [
-      newPlayer ? (
-        <>
-          <Button action="post" target={{ pathname: "/quiz" }}>
-            start quiz
-          </Button>
-        </>
-      ) : (
-        <>
-          {isUserEligibleToPlayAgain && (
-            <Button action="post" target={{ pathname: "/quiz" }}>
-              start quiz
-            </Button>
-          )}
-          <Button
-            action="post"
-            target={{ pathname: `/store/${getCapColor(points)}` }}
-          >
-            claim your cap
-          </Button>
-        </>
+      newPlayer && (
+        <Button action="post" target={{ pathname: "/quiz" }}>
+          start quiz
+        </Button>
+      ),
+      !newPlayer && isUserEligibleToPlayAgain && (
+        <Button action="post" target={{ pathname: "/quiz" }}>
+          start quiz
+        </Button>
+      ),
+      !newPlayer && (
+        <Button
+          action="post"
+          target={{ pathname: `/store/${getCapColor(points)}` }}
+        >
+          claim your cap
+        </Button>
       ),
     ],
   };
